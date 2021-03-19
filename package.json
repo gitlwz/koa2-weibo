@@ -20,7 +20,9 @@
     "koa-onerror": "^4.1.0",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
-    "koa-views": "^6.2.0"
+    "koa-views": "^6.2.0",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.5.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
