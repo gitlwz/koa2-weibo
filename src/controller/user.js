@@ -8,6 +8,7 @@ const { SuccessModel, ErrorModel } = require('../model/ResModel')
 const {
     registerUserNameNotExistInfo
 } = require('../model/ErrorInfo')
+const doCrypto = require("../utils/ctyp")
 /**
  * 用户名是否存在
  * @param {string} userName 用户名
@@ -39,7 +40,7 @@ async function register({ userName, password, gender }) {
     try {
         await createUser({
             userName,
-            password: password, //doCrypto(password),
+            password: doCrypto(password),
             gender
         })
         return new SuccessModel()
