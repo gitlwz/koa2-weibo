@@ -1,7 +1,4 @@
-/**
- * @description 用户数据模型
- * @author 双越老师
- */
+
 
 const seq = require('../seq')
 const { STRING, DECIMAL } = require('../types')

@@ -1,7 +1,4 @@
-/**
- * @description 用户关注关系
- * @author 双越老师
- */
+
 
 const seq = require('../seq')
 const { INTEGER } = require('../types')

@@ -1,7 +1,4 @@
-/**
- * @description 基于 jquery 封装 ajax
- * @author 双越老师
- */
+
 
 (function(window, $) {
     // 方法将暴露到 window.ajax 下

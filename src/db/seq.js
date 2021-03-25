@@ -1,7 +1,4 @@
-/**
- * @description sequelize 实例
- * @author 双越老师
- */
+
 
 const Sequelize = require('sequelize')
 const { MYSQL_CONF } = require('../conf/db')

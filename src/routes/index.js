@@ -11,9 +11,9 @@ router.get('/string', async (ctx, next) => {
 })
 
 router.get('/json', async (ctx, next) => {
-    throw Error()
+   
     ctx.body = {
-        title: 'koa2 json'
+        title: 'koa2 json',
     }
 })
 

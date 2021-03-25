@@ -1,7 +1,3 @@
-/**
- * @description 微博数据模型
- * @author 双越老师
- */
 
 const seq = require('../seq')
 const { INTEGER, STRING, TEXT } = require('../types')
