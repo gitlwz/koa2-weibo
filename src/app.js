@@ -16,8 +16,8 @@ const { isProd } = require('./utils/env')
 //配置常量end
 
 const index = require('./routes/index')
-const users = require('./routes/users')
-
+const userAPIRouter = require('./routes/api/user')
+const userViewRouter = require('./routes/view/user')
 
 //路由
 const errorViewRouter = require('./routes/view/error')
@@ -60,8 +60,12 @@ app.use(session({
 // session 配置end
 
 // routes
+
+
 app.use(index.routes(), index.allowedMethods())
-app.use(users.routes(), users.allowedMethods())
+
+app.use(userAPIRouter.routes(), userAPIRouter.allowedMethods())
+app.use(userViewRouter.routes(), userViewRouter.allowedMethods())
 
 app.use(errorViewRouter.routes(), errorViewRouter.allowedMethods()) // 404 路由注册到最后面
 // error-handling

@@ -6,17 +6,6 @@
         "node": true
     },
     "rules": {
-        "indent": ["error", 4],
-        "quotes": [
-            "error",
-            "single",
-            {
-              "allowTemplateLiterals": true
-            }
-        ],
-        "semi": [
-            "error",
-            "never"
-        ]
+        "indent": ["error", 4]
     }
 }
