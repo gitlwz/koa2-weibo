@@ -40,6 +40,7 @@
     window.ajax.upload = function (url, file, callback) {
         var formData = new FormData()
         formData.append('file', file)
+        formData.append('a', "123")
         $.ajax({
             type: 'POST',
             url,

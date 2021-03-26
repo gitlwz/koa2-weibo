@@ -1,3 +1,4 @@
+const path = require('path')
 const Koa = require('koa')
 const app = new Koa()
 const views = require('koa-views')
@@ -16,6 +17,7 @@ const { isProd } = require('./utils/env')
 //配置常量end
 
 const index = require('./routes/index')
+const utilsAPIRouter = require('./routes/api/utils')
 const userAPIRouter = require('./routes/api/user')
 const userViewRouter = require('./routes/view/user')
 
@@ -37,7 +39,7 @@ app.use(bodyparser({
 app.use(json())
 app.use(logger())
 app.use(koaStatic(__dirname + '/public'))
-
+app.use(koaStatic(path.join(__dirname, '..', 'uploadFiles')))
 app.use(views(__dirname + '/views', {
     extension: 'ejs'
 }))
@@ -63,6 +65,7 @@ app.use(session({
 
 app.use(index.routes(), index.allowedMethods())
 
+app.use(utilsAPIRouter.routes(), utilsAPIRouter.allowedMethods())
 app.use(userAPIRouter.routes(), userAPIRouter.allowedMethods())
 app.use(userViewRouter.routes(), userViewRouter.allowedMethods())
 
