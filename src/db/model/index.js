@@ -9,12 +9,12 @@ Blog.belongsTo(User, {
     foreignKey: 'userId'
 })
 
-// UserRelation.belongsTo(User, {
-//     foreignKey: 'followerId'
-// })
-// User.hasMany(UserRelation, {
-//     foreignKey: 'userId'
-// })
+UserRelation.belongsTo(User, {
+    foreignKey: 'followerId'
+})
+User.hasMany(UserRelation, {
+    foreignKey: 'userId'
+})
 
 // Blog.belongsTo(UserRelation, {
 //     foreignKey: 'userId',
