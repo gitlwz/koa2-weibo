@@ -17,9 +17,9 @@ async function getUsersByFollower(followerId) {
                 model: UserRelation,
                 where: {
                     followerId,
-                    userId: {
-                        [Sequelize.Op.ne]: followerId
-                    }
+                    // userId: {
+                    //     [Sequelize.Op.ne]: followerId
+                    // }
                 }
             }
         ]
@@ -36,7 +36,45 @@ async function getUsersByFollower(followerId) {
         userList
     }
 }
+/**
+ * 获取关注人列表
+ * @param {number} userId userId
+ */
+async function getFollowersByUser(userId) {
+    const result = await UserRelation.findAndCountAll({
+        order: [
+            ['id', 'desc']
+        ],
+        include: [
+            {
+                model: User,
+                attributes: ['id', 'userName', 'nickName', 'picture']
+            }
+        ],
+        where: {
+            userId,
+            // followerId: {
+            //     [Sequelize.Op.ne]: userId
+            // }
+        }
+    })
+    // result.count 总数
+    // result.rows 查询结果，数组
 
+    let userList = result.rows.map(row => row.dataValues)
+
+    userList = userList.map(item => {
+        let user = item.user
+        user = user.dataValues
+        user = formatUser(user)
+        return user
+    })
+
+    return {
+        count: result.count,
+        userList
+    }
+}
 /**
  * 添加关注关系
  * @param {number} userId 用户 id
@@ -68,6 +106,7 @@ async function deleteFollower(userId, followerId) {
 
 module.exports = {
     getUsersByFollower,
+    getFollowersByUser,
     addFollower,
     deleteFollower
 }
