@@ -7,7 +7,7 @@ let BLOG_ID = ''
 test('创建一条微博，应该成功', async () => {
     // 定义测试内容
     const content = '单元测试自动创建的微博_' + Date.now()
-    const image = '/xxx.png'
+    const image = 'https://picsum.photos/300/300'
 
     // 开始测试
     const res = await server

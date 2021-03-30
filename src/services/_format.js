@@ -1,6 +1,6 @@
 
 const { DEFAULT_PICTURE, REG_FOR_AT_WHO } = require('../conf/constant')
-// const { timeFormat } = require('../utils/dt')
+const { timeFormat } = require('../utils/dt')
 
 /**
  * 用户默认头像
@@ -36,8 +36,8 @@ function formatUser(list) {
  * @param {Object} obj 数据
  */
 function _formatDBTime(obj) {
-    // obj.createdAtFormat = timeFormat(obj.createdAt)
-    // obj.updatedAtFormat = timeFormat(obj.updatedAt)
+    obj.createdAtFormat = timeFormat(obj.createdAt)
+    obj.updatedAtFormat = timeFormat(obj.updatedAt)
     return obj
 }
 

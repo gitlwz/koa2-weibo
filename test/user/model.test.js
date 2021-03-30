@@ -7,7 +7,7 @@ test('User 模型的各个属性，符合预期', () => {
         password: 'p123123',
         nickName: '张三',
         // gender: 1,
-        picture: '/xxx.png',
+        picture: 'https://picsum.photos/300/300',
         city: '北京'
     })
     // 验证各个属性
@@ -15,6 +15,6 @@ test('User 模型的各个属性，符合预期', () => {
     expect(user.password).toBe('p123123')
     expect(user.nickName).toBe('张三')
     expect(user.gender).toBe(3) // 测试 gender 默认值
-    expect(user.picture).toBe('/xxx.png')
+    expect(user.picture).toBe('https://picsum.photos/300/300')
     expect(user.city).toBe('北京')
 })
