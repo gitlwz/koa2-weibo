@@ -15,6 +15,7 @@ const { SESSION_SECRET_KEY } = require('./conf/secretKeys')
 const { REDIS_CONF } = require('./conf/db')
 const { isProd } = require('./utils/env')
 //配置常量end
+const profileAPIRouter = require('./routes/api/blog-profile')
 const homeAPIRouter = require('./routes/api/blog-home')
 const utilsAPIRouter = require('./routes/api/utils')
 const userAPIRouter = require('./routes/api/user')
@@ -61,6 +62,7 @@ app.use(session({
 // session 配置end
 
 // routes
+app.use(profileAPIRouter.routes(), profileAPIRouter.allowedMethods())
 app.use(homeAPIRouter.routes(), homeAPIRouter.allowedMethods())
 app.use(blogViewRouter.routes(), blogViewRouter.allowedMethods())
 app.use(utilsAPIRouter.routes(), utilsAPIRouter.allowedMethods())

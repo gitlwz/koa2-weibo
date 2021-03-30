@@ -7,26 +7,27 @@
             <h4 class="margin-bottom-20 padding-bottom-10 border-bottom">个人空间</h4>
 
             <% if (blogData.isEmpty) { %>
-                <div>
-                    <center>暂无数据</center>
-                </div>
+            <div>
+                <center>暂无数据</center>
+            </div>
             <% } else { %>
-                <!-- 微博列表 第一页 -->
-                <div id="container-weibo-list" class="weibo-list">
-                    <%- include('widgets/blog-list', {
+            <!-- 微博列表 第一页 -->
+            <div id="container-weibo-list" class="weibo-list">
+                <%- include('widgets/blog-list', {
                         blogList: blogData.blogList
                     })%>
-                </div> <!-- 微博列表 结束 -->
-                <!-- 加载更多 -->
-                <% if (blogData.count > blogData.blogList.length) { %>
-                    <%- include('widgets/load-more', {
+            </div> <!-- 微博列表 结束 -->
+            <!-- 加载更多 -->
+            <% if (blogData.count > blogData.blogList.length) { %>
+            <%- include('widgets/load-more', {
                         pageSize: blogData.pageSize,
                         pageIndex: blogData.pageIndex,
                         count: blogData.count,
                         containerSelector: '#container-weibo-list',
                         api: '/api/profile/loadMore/' + userData.userInfo.userName,
                     })%>
-                <% } %> <!-- 加载更多 结束 -->
+            <% } %>
+            <!-- 加载更多 结束 -->
             <% } %>
         </div> <!-- 左侧结束 -->
 
@@ -42,17 +43,7 @@
                 });%>
             </div>
 
-            <!-- 粉丝 -->
-            <%- include('widgets/fans', {
-                count: userData.fansData.count,
-                userList: userData.fansData.list
-            })%>
 
-            <!-- 关注 -->
-            <%- include('widgets/followers', {
-                count: userData.followersData.count,
-                userList: userData.followersData.list
-            })%>
 
         </div> <!-- 右侧结束 -->
     </div>
