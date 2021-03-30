@@ -15,12 +15,11 @@ const { SESSION_SECRET_KEY } = require('./conf/secretKeys')
 const { REDIS_CONF } = require('./conf/db')
 const { isProd } = require('./utils/env')
 //配置常量end
-
-const index = require('./routes/index')
+const homeAPIRouter = require('./routes/api/blog-home')
 const utilsAPIRouter = require('./routes/api/utils')
 const userAPIRouter = require('./routes/api/user')
 const userViewRouter = require('./routes/view/user')
-
+const blogViewRouter = require('./routes/view/blog')
 //路由
 const errorViewRouter = require('./routes/view/error')
 // error handler
@@ -62,9 +61,8 @@ app.use(session({
 // session 配置end
 
 // routes
-
-app.use(index.routes(), index.allowedMethods())
-
+app.use(homeAPIRouter.routes(), homeAPIRouter.allowedMethods())
+app.use(blogViewRouter.routes(), blogViewRouter.allowedMethods())
 app.use(utilsAPIRouter.routes(), utilsAPIRouter.allowedMethods())
 app.use(userAPIRouter.routes(), userAPIRouter.allowedMethods())
 app.use(userViewRouter.routes(), userViewRouter.allowedMethods())
