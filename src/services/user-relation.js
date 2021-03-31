@@ -17,9 +17,9 @@ async function getUsersByFollower(followerId) {
                 model: UserRelation,
                 where: {
                     followerId,
-                    // userId: {
-                    //     [Sequelize.Op.ne]: followerId
-                    // }
+                    userId: {
+                        [Sequelize.Op.ne]: followerId
+                    }
                 }
             }
         ]
@@ -53,9 +53,9 @@ async function getFollowersByUser(userId) {
         ],
         where: {
             userId,
-            // followerId: {
-            //     [Sequelize.Op.ne]: userId
-            // }
+            followerId: {
+                [Sequelize.Op.ne]: userId
+            }
         }
     })
     // result.count 总数
