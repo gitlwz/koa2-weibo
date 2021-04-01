@@ -17,3 +17,13 @@ test('张三创建一条微博，@李四，应该成功', async () => {
     BLOG_ID = res.body.data.id
 })
 
+test('获取李四的 @ 列表（第一页），应该有刚刚创建的微博', async () => {
+    const res = await server
+        .get('/api/atMe/loadMore/0') // 列表时倒叙排列
+        .set('cookie', L_COOKIE)
+    expect(res.body.errno).toBe(0)
+    const data = res.body.data
+    const blogList = data.blogList
+    const isHaveCurBlog = blogList.some(blog => blog.id === BLOG_ID)
+    expect(isHaveCurBlog).toBe(true)
+})
