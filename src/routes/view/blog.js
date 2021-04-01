@@ -138,4 +138,37 @@ router.get('/square', loginRedirect, async (ctx, next) => {
         }
     })
 })
+
+
+// atMe 路由
+router.get('/at-me', loginRedirect, async (ctx, next) => {
+    const { id: userId } = ctx.session.userInfo
+
+    // 获取 @ 数量
+    const atCountResult = await getAtMeCount(userId)
+    const { count: atCount } = atCountResult.data
+
+    // 获取第一页列表
+    const result = await getAtMeBlogList(userId)
+    const { isEmpty, blogList, pageSize, pageIndex, count } = result.data
+
+    // 渲染页面
+    await ctx.render('atMe', {
+        atCount,
+        blogData: {
+            isEmpty,
+            blogList,
+            pageSize,
+            pageIndex,
+            count
+        }
+    })
+
+    // 标记为已读
+    if (atCount > 0) {
+        await markAsRead(userId)
+    }
+})
+
+
 module.exports = router
